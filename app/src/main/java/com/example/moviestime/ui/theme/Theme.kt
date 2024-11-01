@@ -1,6 +1,5 @@
 package com.example.moviestime.ui.theme
 
-import android.app.Activity
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
@@ -12,15 +11,17 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
 
 private val DarkColorScheme = darkColorScheme(
-    primary = Purple80,
-    secondary = PurpleGrey80,
-    tertiary = Pink80
+    primary = DarkOrange,
+    secondary = white,
+    background = DarkPink,
+    onBackground = DarkSearch
 )
 
 private val LightColorScheme = lightColorScheme(
-    primary = Purple40,
-    secondary = PurpleGrey40,
-    tertiary = Pink40
+    primary = orange,
+    secondary = white,
+    background = pink,
+    onBackground = DarkSearch
 
     /* Other default colors to override
     background = Color(0xFFFFFBFE),
@@ -40,6 +41,8 @@ fun MoviesTimeTheme(
     dynamicColor: Boolean = true,
     content: @Composable () -> Unit
 ) {
+    val shapes = Shapes
+    val typography = Typography
     val colorScheme = when {
         dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
             val context = LocalContext.current
@@ -52,7 +55,8 @@ fun MoviesTimeTheme(
 
     MaterialTheme(
         colorScheme = colorScheme,
-        typography = Typography,
+        typography = typography,
+        shapes = shapes,
         content = content
     )
 }
