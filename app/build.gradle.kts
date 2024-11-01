@@ -1,6 +1,9 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    id ("kotlin-kapt")
+    id ("com.google.dagger.hilt.android")
+    id ("kotlin-parcelize")
 }
 
 android {
@@ -66,4 +69,18 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+    implementation(project(":presentation"))
+    implementation(project(":domain"))
+    implementation(project(":data"))
+
+    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation( "com.squareup.retrofit2:converter-gson:2.9.0")
+
+    implementation ("com.google.dagger:hilt-android:2.48")
+    kapt( "com.google.dagger:hilt-compiler:2.48")
+    implementation ("androidx.room:room-ktx:2.5.2")
+
+    implementation("io.coil-kt:coil-compose:2.4.0")
+
 }
